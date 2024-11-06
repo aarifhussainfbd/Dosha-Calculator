@@ -8,31 +8,26 @@
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
+      padding: 20px;
       background-color: #f4f4f4;
       background-size: cover;
       background-position: center;
-      background-image: url('');
       color: #333;
     }
     #quiz-container {
-      max-width: 600px;
+      max-width: 700px;
       background-color: rgba(255, 255, 255, 0.9);
-      padding: 30px;
+      padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      margin: auto;
     }
     h1 {
       text-align: center;
       color: #4A7C59;
-      margin-bottom: 20px;
     }
     .question {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       font-weight: bold;
     }
     label {
@@ -43,7 +38,7 @@
       margin-top: 8px;
       cursor: pointer;
     }
-    input[type="radio"] {
+    input[type="radio"], input[type="checkbox"] {
       margin-right: 8px;
     }
     button {
@@ -82,33 +77,22 @@
 <div id="quiz-container">
   <h1>Ayurvedic Body Type Quiz</h1>
 
-  <div class="question" id="question1">
-    <p>Body size:</p>
-    <label><input type="radio" name="q1" value="A"> A. Slim</label>
-    <label><input type="radio" name="q1" value="B"> B. Medium</label>
-    <label><input type="radio" name="q1" value="C"> C. Large</label>
+  <div class="question">
+    <p>1. Which of these best describes your physical frame?</p>
+    <label><input type="radio" name="q1" value="A"> Small</label>
+    <label><input type="radio" name="q1" value="B"> Medium</label>
+    <label><input type="radio" name="q1" value="C"> Large</label>
   </div>
 
-  <div class="question" id="question2">
-    <p>Body weight:</p>
-    <label><input type="radio" name="q2" value="A"> A. Low</label>
-    <label><input type="radio" name="q2" value="B"> B. Medium</label>
-    <label><input type="radio" name="q2" value="C"> C. Overweight</label>
+  <div class="question">
+    <p>2. Which best describes your skin?</p>
+    <label><input type="radio" name="q2" value="B"> Oily and soft with freckles or pimples</label>
+    <label><input type="radio" name="q2" value="C"> Thick, oily, cool skin</label>
+    <label><input type="radio" name="q2" value="A"> Dry</label>
   </div>
 
-  <div class="question" id="question3">
-    <p>Body shape:</p>
-    <label><input type="radio" name="q3" value="A"> A. Thin, angular</label>
-    <label><input type="radio" name="q3" value="B"> B. Tapering</label>
-    <label><input type="radio" name="q3" value="C"> C. Rounded, double</label>
-  </div>
-
-  <div class="question" id="question4">
-    <p>Cheeks:</p>
-    <label><input type="radio" name="q4" value="A"> A. Wrinkled, sunken</label>
-    <label><input type="radio" name="q4" value="B"> B. Smooth flat</label>
-    <label><input type="radio" name="q4" value="C"> C. Rounded, plump</label>
-  </div>
+  <!-- Add all remaining questions in a similar structure -->
+  <!-- For yes/no questions use checkboxes instead -->
 
   <button onclick="calculateResult()">Submit</button>
 
@@ -120,35 +104,31 @@
 </div>
 
 <script>
-  // Set a random Ayurvedic-themed background image
-  const backgrounds = [
-    'https://example.com/background1.jpg',
-    'https://example.com/background2.jpg',
-    'https://example.com/background3.jpg'
-  ];
-  document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
-
   function calculateResult() {
+    // Initialize counts for each type
     let counts = { A: 0, B: 0, C: 0 };
 
-    for (let i = 1; i <= 4; i++) {
+    // Calculate scores based on selected options
+    for (let i = 1; i <= 29; i++) {
       const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
       if (selectedOption) {
         counts[selectedOption.value]++;
       }
     }
 
+    // Determine the result based on highest counts
     let result = '';
     if (counts.A >= counts.B && counts.A >= counts.C) {
-      result += 'Vata';
+      result = 'Vata';
     }
     if (counts.B >= counts.A && counts.B >= counts.C) {
-      result += 'Pitta';
+      result = 'Pitta';
     }
     if (counts.C >= counts.A && counts.C >= counts.B) {
-      result += 'Kapha';
+      result = 'Kapha';
     }
 
+    // Display the result and additional text
     document.getElementById('result').innerText = result;
 
     let resultText = '';
