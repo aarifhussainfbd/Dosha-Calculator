@@ -14,23 +14,66 @@
       justify-content: center;
       height: 100vh;
       background-color: #f4f4f4;
+      background-size: cover;
+      background-position: center;
+      background-image: url('');
+      color: #333;
     }
     #quiz-container {
       max-width: 600px;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #4A7C59;
+      margin-bottom: 20px;
     }
     .question {
       margin-bottom: 20px;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      padding: 5px;
+      background-color: #E3E6D8;
+      border-radius: 5px;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+    input[type="radio"] {
+      margin-right: 8px;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4A7C59;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #6A9A7C;
     }
     #result-container {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f0f0f0;
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #D4E6A5;
       border-radius: 8px;
+      text-align: center;
       display: none;
+      color: #333;
+    }
+    #result-container a {
+      color: #4A7C59;
+      text-decoration: none;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -77,8 +120,15 @@
 </div>
 
 <script>
+  // Set a random Ayurvedic-themed background image
+  const backgrounds = [
+    'https://example.com/background1.jpg',
+    'https://example.com/background2.jpg',
+    'https://example.com/background3.jpg'
+  ];
+  document.body.style.backgroundImage = `url(${backgrounds[Math.floor(Math.random() * backgrounds.length)]})`;
+
   function calculateResult() {
-    // Count the selected options for each question
     let counts = { A: 0, B: 0, C: 0 };
 
     for (let i = 1; i <= 4; i++) {
@@ -88,7 +138,6 @@
       }
     }
 
-    // Determine the most selected option or combination
     let result = '';
     if (counts.A >= counts.B && counts.A >= counts.C) {
       result += 'Vata';
@@ -100,22 +149,23 @@
       result += 'Kapha';
     }
 
-    // Display the result and additional text in the result container
     document.getElementById('result').innerText = result;
 
-    // Additional text based on the result
     let resultText = '';
     if (result === 'Vata') {
-      resultText = 'Your Body type is Vata. You need to take Vata Spice mix. Here is the link: <a href="https://www.vata.com" target="_blank">www.vata.com</a><br>Also, download your diet chart from here: <a href="https://www.download.com/vata" target="_blank">www.download.com/vata</a>';
+      resultText = `Your Body type is Vata. You need to take Vata Spice mix. 
+                    Here is the link: <a href="https://www.vata.com" target="_blank">www.vata.com</a>
+                    <br>Download your diet chart: <a href="https://www.download.com/vata" target="_blank">Diet Chart</a>`;
     } else if (result === 'Pitta') {
-      resultText = 'Your Body type is Pitta. Additional text and links for Pitta.';
-      // Add Pitta-specific text and links here
+      resultText = `Your Body type is Pitta. You may benefit from a Pitta Spice mix. 
+                    Here is the link: <a href="https://www.pitta.com" target="_blank">www.pitta.com</a>
+                    <br>Download your diet chart: <a href="https://www.download.com/pitta" target="_blank">Diet Chart</a>`;
     } else if (result === 'Kapha') {
-      resultText = 'Your Body type is Kapha. Additional text and links for Kapha.';
-      // Add Kapha-specific text and links here
+      resultText = `Your Body type is Kapha. You should consider a Kapha Spice mix.
+                    Here is the link: <a href="https://www.kapha.com" target="_blank">www.kapha.com</a>
+                    <br>Download your diet chart: <a href="https://www.download.com/kapha" target="_blank">Diet Chart</a>`;
     } else {
-      resultText = 'Mixed or unclear result. Additional text and links for mixed result.';
-      // Add text and links for mixed result here
+      resultText = 'Mixed or unclear result. Please consult an Ayurvedic specialist for more guidance.';
     }
 
     document.getElementById('result-text').innerHTML = resultText;
