@@ -15,7 +15,7 @@
       color: #333;
     }
     #quiz-container {
-      max-width: 1000px;
+      max-width: 700px;
       background-color: rgba(255, 255, 255, 0.9);
       padding: 20px;
       border-radius: 12px;
@@ -29,6 +29,7 @@
     .question {
       margin-bottom: 15px;
       font-weight: bold;
+      display: none; /* Hide all questions initially */
     }
     label {
       display: block;
@@ -77,163 +78,31 @@
 <div id="quiz-container">
   <h1>Ayurvedic Body Type Quiz</h1>
 
-  <div class="question">
-  <p>1. Body Type and Weight</p>
-  <label><input type="radio" name="q1" value="A"> I am slender and find it challenging to gain weight.</label>
-  <label><input type="radio" name="q1" value="B"> I have a medium build and can gain or lose weight easily depending on diet and exercise.</label>
-  <label><input type="radio" name="q1" value="C"> I have a heavier build, gain weight quickly, and find it difficult to lose.</label>
-</div>
+  <!-- Question 1 -->
+  <div class="question" id="question1">
+    <p>1. Which of these best describes your physical frame?</p>
+    <label><input type="radio" name="q1" value="A"> Small</label>
+    <label><input type="radio" name="q1" value="B"> Medium</label>
+    <label><input type="radio" name="q1" value="C"> Large</label>
+  </div>
 
-<div class="question">
-  <p>2. Eye Characteristics</p>
-  <label><input type="radio" name="q2" value="A"> My eyes are dry and sometimes twitch.</label>
-  <label><input type="radio" name="q2" value="B"> My eyes are sensitive to light, and they often appear red or irritated.</label>
-  <label><input type="radio" name="q2" value="C"> I have large, round, clear eyes.</label>
-</div>
+  <!-- Question 2 -->
+  <div class="question" id="question2">
+    <p>2. Which best describes your skin?</p>
+    <label><input type="radio" name="q2" value="B"> Oily and soft with freckles or pimples</label>
+    <label><input type="radio" name="q2" value="C"> Thick, oily, cool skin</label>
+    <label><input type="radio" name="q2" value="A"> Dry</label>
+  </div>
 
-<div class="question">
-  <p>3. Teeth Alignment</p>
-  <label><input type="radio" name="q3" value="A"> My teeth are unevenly arranged.</label>
-  <label><input type="radio" name="q3" value="B"> My teeth are well-aligned but prone to cavities.</label>
-  <label><input type="radio" name="q3" value="C"> My teeth are well-aligned, strong, and rather large.</label>
-</div>
-
-<div class="question">
-  <p>4. Face Shape</p>
-  <label><input type="radio" name="q4" value="A"> My face is long.</label>
-  <label><input type="radio" name="q4" value="B"> My face is heart-shaped.</label>
-  <label><input type="radio" name="q4" value="C"> My face is round.</label>
-</div>
-
-<div class="question">
-  <p>5. Skin Type</p>
-  <label><input type="radio" name="q5" value="A"> My skin is dry, thin, and prone to wrinkles; it tans easily.</label>
-  <label><input type="radio" name="q5" value="B"> I have reddish, sensitive skin that sunburns easily and may have pimples, scars, or moles.</label>
-  <label><input type="radio" name="q5" value="C"> My skin is youthful, well-moisturized, and clear, with a tendency to tan rather than burn.</label>
-</div>
-
-<div class="question">
-  <p>6. Hair Texture and Condition</p>
-  <label><input type="radio" name="q6" value="A"> My hair is dry and brittle, and it falls out easily.</label>
-  <label><input type="radio" name="q6" value="B"> I have straight, thin hair, with a tendency to gray prematurely.</label>
-  <label><input type="radio" name="q6" value="C"> My hair is thick, curly, and abundant.</label>
-</div>
-
-<div class="question">
-  <p>7. Nail Quality</p>
-  <label><input type="radio" name="q7" value="A"> My nails are dry and break easily.</label>
-  <label><input type="radio" name="q7" value="B"> My nails are smooth, pinkish, and flexible.</label>
-  <label><input type="radio" name="q7" value="C"> My nails are strong, thick, and smooth.</label>
-</div>
-
-<div class="question">
-  <p>8. Sleep Habits</p>
-  <label><input type="radio" name="q8" value="A"> I have trouble falling asleep and often wake up during the night; my sleep is light and easily disturbed.</label>
-  <label><input type="radio" name="q8" value="B"> I sleep moderately well and wake up feeling energized.</label>
-  <label><input type="radio" name="q8" value="C"> I need at least 8 hours of sleep to feel rested; my sleep is deep, and I wake up slowly.</label>
-</div>
-
-<div class="question">
-  <p>9. Temperature Preference</p>
-  <label><input type="radio" name="q9" value="A"> My hands and feet are usually cold, and I prefer warm environments.</label>
-  <label><input type="radio" name="q9" value="B"> I feel warm regardless of the season and prefer cooler surroundings.</label>
-  <label><input type="radio" name="q9" value="C"> My body feels cool, and I adapt well to most temperatures, preferring moderate ones.</label>
-</div>
-
-<div class="question">
-  <p>10. Sweating Tendency</p>
-  <label><input type="radio" name="q10" value="A"> I barely sweat.</label>
-  <label><input type="radio" name="q10" value="B"> I sweat heavily with minimal activity.</label>
-  <label><input type="radio" name="q10" value="C"> I sweat lightly even during moderate activity.</label>
-</div>
-
-<div class="question">
-  <p>11. Appetite</p>
-  <label><input type="radio" name="q11" value="A"> My appetite is variable, and I get full quickly with small meals.</label>
-  <label><input type="radio" name="q11" value="B"> I have a strong appetite and feel hungry frequently.</label>
-  <label><input type="radio" name="q11" value="C"> I have a moderate appetite and can skip meals easily.</label>
-</div>
-
-<div class="question">
-  <p>12. Digestive Health</p>
-  <label><input type="radio" name="q12" value="A"> My digestion is irregular, and I often experience bloating, flatulence, or stomach sounds after moderate meals.</label>
-  <label><input type="radio" name="q12" value="B"> My digestion is quick and easy, although I may experience acidity or heartburn.</label>
-  <label><input type="radio" name="q12" value="C"> My digestion is slow, and I feel sluggish or sleepy after heavy meals.</label>
-</div>
-
-<div class="question">
-  <p>13. Food Preference</p>
-  <label><input type="radio" name="q13" value="A"> I prefer salty, savory, or crispy foods.</label>
-  <label><input type="radio" name="q13" value="B"> I enjoy sweet, spicy, or hot foods.</label>
-  <label><input type="radio" name="q13" value="C"> I favor sweet, oily, or creamy foods.</label>
-</div>
-
-<div class="question">
-  <p>14. Bowel Regularity</p>
-  <label><input type="radio" name="q14" value="A"> My bowel movements are irregular, hard, and often constipated.</label>
-  <label><input type="radio" name="q14" value="B"> My bowel movements are regular, more than once daily.</label>
-  <label><input type="radio" name="q14" value="C"> My bowel movements are generally once daily and tend to be sluggish.</label>
-</div>
-
-<div class="question">
-  <p>15. Stress Response</p>
-  <label><input type="radio" name="q15" value="A"> I feel anxious, confused, or worried.</label>
-  <label><input type="radio" name="q15" value="B"> I get irritable or aggressive.</label>
-  <label><input type="radio" name="q15" value="C"> I stay calm and prefer to withdraw.</label>
-</div>
-
-<div class="question">
-  <p>16. Movement and Reaction Style</p>
-  <label><input type="radio" name="q16" value="A"> I am quick and spontaneous.</label>
-  <label><input type="radio" name="q16" value="B"> I am methodical and organized.</label>
-  <label><input type="radio" name="q16" value="C"> I move and respond slowly.</label>
-</div>
-
-<div class="question">
-  <p>17. Speaking Style</p>
-  <label><input type="radio" name="q17" value="A"> My speech is fast and often unclear.</label>
-  <label><input type="radio" name="q17" value="B"> I speak precisely and clearly.</label>
-  <label><input type="radio" name="q17" value="C"> My speech is slow, long, and monotonous.</label>
-</div>
-<div class="question">
-  <p>18. Memory</p>
-  <label><input type="radio" name="q18" value="A"> I have a good short-term memory but often forget quickly.</label>
-  <label><input type="radio" name="q18" value="B"> I have a good medium-term memory.</label>
-  <label><input type="radio" name="q18" value="C"> I have a strong long-term memory; it may take time to learn, but I retain information well.</label>
-</div>
-
-<div class="question">
-  <p>19. Future Planning</p>
-  <label><input type="radio" name="q19" value="A"> I have multiple plans and like change but sometimes feel worried about the future.</label>
-  <label><input type="radio" name="q19" value="B"> I aim to advance in my career, seeking growth, recognition, and security with clear plans.</label>
-  <label><input type="radio" name="q19" value="C"> I prefer stability, need time to relax, and am not keen on too much change.</label>
-</div>
-
-<div class="question">
-  <p>20. Task Management</p>
-  <label><input type="radio" name="q20" value="A"> I am active, multitask, and take on various projects, but I often don’t complete them.</label>
-  <label><input type="radio" name="q20" value="B"> I’m focused, dynamic, and prefer to plan, aiming for perfection.</label>
-  <label><input type="radio" name="q20" value="C"> I am steady and reliable; I don’t multitask, but I complete what I start.</label>
-</div>
-
-<div class="question">
-  <p>21. Concentration Ability</p>
-  <label><input type="radio" name="q21" value="A"> I am easily distracted.</label>
-  <label><input type="radio" name="q21" value="B"> My concentration varies with interest in the topic.</label>
-  <label><input type="radio" name="q21" value="C"> I have a strong focus and rarely get distracted.</label>
-</div>
-
-<div class="question">
-  <p>22. Emotional Characteristics</p>
-  <label><input type="radio" name="q22" value="A"> I often feel anxious, fearful, or uncertain, and I’m easily overwhelmed by choices.</label>
-  <label><input type="radio" name="q22" value="B"> I am ambitious and enjoy planning, but interruptions can irritate me.</label>
-  <label><input type="radio" name="q22" value="C"> I am calm, enjoy solitude, and am peace-loving.</label>
-</div>
-  
   <!-- Add all remaining questions in a similar structure -->
-  <!-- For yes/no questions use checkboxes instead -->
 
-  <button onclick="calculateResult()">Submit</button>
+  <!-- Navigation Buttons -->
+  <div style="display: flex; justify-content: space-between;">
+    <button id="prevButton" onclick="showPrevQuestion()" disabled>Previous</button>
+    <button id="nextButton" onclick="showNextQuestion()" disabled>Next</button>
+  </div>
+
+  <button onclick="submitQuiz()" style="display:none;" id="submitBtn">Submit</button>
 
   <div id="result-container">
     <h2>Your Ayurvedic Body Type:</h2>
@@ -243,19 +112,60 @@
 </div>
 
 <script>
+  let currentQuestionIndex = 0;
+  const questions = document.querySelectorAll('.question');
+  const nextButton = document.getElementById('nextButton');
+  const prevButton = document.getElementById('prevButton');
+  const submitBtn = document.getElementById('submitBtn');
+
+  // Show the first question initially
+  showQuestion(currentQuestionIndex);
+
+  // Function to show a specific question
+  function showQuestion(index) {
+    questions.forEach((q, i) => {
+      q.style.display = i === index ? 'block' : 'none';
+    });
+
+    // Enable/Disable navigation buttons
+    prevButton.disabled = index === 0;
+    nextButton.disabled = index === questions.length - 1;
+
+    // Show "Next" button when an answer is selected
+    const currentQuestion = questions[index];
+    const radioButtons = currentQuestion.querySelectorAll('input[type="radio"]');
+    nextButton.disabled = !Array.from(radioButtons).some(r => r.checked);
+  }
+
+  // Show next question
+  function showNextQuestion() {
+    currentQuestionIndex++;
+    showQuestion(currentQuestionIndex);
+  }
+
+  // Show previous question
+  function showPrevQuestion() {
+    currentQuestionIndex--;
+    showQuestion(currentQuestionIndex);
+  }
+
+  // Check if the quiz is complete and display the submit button
+  function submitQuiz() {
+    calculateResult();
+    document.getElementById('submitBtn').style.display = 'none';
+  }
+
+  // Function to calculate the result based on answers
   function calculateResult() {
-    // Initialize counts for each type
     let counts = { A: 0, B: 0, C: 0 };
 
-    // Calculate scores based on selected options
-    for (let i = 1; i <= 29; i++) {
+    for (let i = 1; i <= questions.length; i++) {
       const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
       if (selectedOption) {
         counts[selectedOption.value]++;
       }
     }
 
-    // Determine the result based on highest counts
     let result = '';
     if (counts.A >= counts.B && counts.A >= counts.C) {
       result = 'Vata';
@@ -267,7 +177,6 @@
       result = 'Kapha';
     }
 
-    // Display the result and additional text
     document.getElementById('result').innerText = result;
 
     let resultText = '';
@@ -283,8 +192,6 @@
       resultText = `Your Body type is Kapha. You should consider a Kapha Spice mix.
                     Here is the link: <a href="https://www.kapha.com" target="_blank">www.kapha.com</a>
                     <br>Download your diet chart: <a href="https://www.download.com/kapha" target="_blank">Diet Chart</a>`;
-    } else {
-      resultText = 'Mixed or unclear result. Please consult an Ayurvedic specialist for more guidance.';
     }
 
     document.getElementById('result-text').innerHTML = resultText;
