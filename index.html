@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayurvedic Body Type Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    #quiz-container {
+      max-width: 600px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    #result-container {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="quiz-container">
+  <h1>Ayurvedic Body Type Quiz</h1>
+
+  <div class="question" id="question1">
+    <p>Body size:</p>
+    <label><input type="radio" name="q1" value="A"> A. Slim</label>
+    <label><input type="radio" name="q1" value="B"> B. Medium</label>
+    <label><input type="radio" name="q1" value="C"> C. Large</label>
+  </div>
+
+  <div class="question" id="question2">
+    <p>Body weight:</p>
+    <label><input type="radio" name="q2" value="A"> A. Low</label>
+    <label><input type="radio" name="q2" value="B"> B. Medium</label>
+    <label><input type="radio" name="q2" value="C"> C. Overweight</label>
+  </div>
+
+  <div class="question" id="question3">
+    <p>Body shape:</p>
+    <label><input type="radio" name="q3" value="A"> A. Thin, angular</label>
+    <label><input type="radio" name="q3" value="B"> B. Tapering</label>
+    <label><input type="radio" name="q3" value="C"> C. Rounded, double</label>
+  </div>
+
+  <div class="question" id="question4">
+    <p>Cheeks:</p>
+    <label><input type="radio" name="q4" value="A"> A. Wrinkled, sunken</label>
+    <label><input type="radio" name="q4" value="B"> B. Smooth flat</label>
+    <label><input type="radio" name="q4" value="C"> C. Rounded, plump</label>
+  </div>
+
+  <button onclick="calculateResult()">Submit</button>
+
+  <div id="result-container">
+    <h2>Your Ayurvedic Body Type:</h2>
+    <p id="result"></p>
+    <p id="result-text"></p>
+  </div>
+</div>
+
+<script>
+  function calculateResult() {
+    // Count the selected options for each question
+    let counts = { A: 0, B: 0, C: 0 };
+
+    for (let i = 1; i <= 4; i++) {
+      const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+      if (selectedOption) {
+        counts[selectedOption.value]++;
+      }
+    }
+
+    // Determine the most selected option or combination
+    let result = '';
+    if (counts.A >= counts.B && counts.A >= counts.C) {
+      result += 'Vata';
+    }
+    if (counts.B >= counts.A && counts.B >= counts.C) {
+      result += 'Pitta';
+    }
+    if (counts.C >= counts.A && counts.C >= counts.B) {
+      result += 'Kapha';
+    }
+
+    // Display the result and additional text in the result container
+    document.getElementById('result').innerText = result;
+
+    // Additional text based on the result
+    let resultText = '';
+    if (result === 'Vata') {
+      resultText = 'Your Body type is Vata. You need to take Vata Spice mix. Here is the link: <a href="https://www.vata.com" target="_blank">www.vata.com</a><br>Also, download your diet chart from here: <a href="https://www.download.com/vata" target="_blank">www.download.com/vata</a>';
+    } else if (result === 'Pitta') {
+      resultText = 'Your Body type is Pitta. Additional text and links for Pitta.';
+      // Add Pitta-specific text and links here
+    } else if (result === 'Kapha') {
+      resultText = 'Your Body type is Kapha. Additional text and links for Kapha.';
+      // Add Kapha-specific text and links here
+    } else {
+      resultText = 'Mixed or unclear result. Additional text and links for mixed result.';
+      // Add text and links for mixed result here
+    }
+
+    document.getElementById('result-text').innerHTML = resultText;
+    document.getElementById('result-container').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
